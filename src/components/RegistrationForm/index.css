@@ -64,3 +64,9 @@
   height: 10%;
   border-width: 0px;
 }
+.successful-msg {
+  color: #475569;
+  font-family: 'roboto';
+  font-weight: bold;
+  font-size: 20px;
+}

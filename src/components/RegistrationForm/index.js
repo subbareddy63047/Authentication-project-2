@@ -38,7 +38,21 @@ class RegistrationForm extends Component {
 
   submitForm = event => {
     event.preventDefault()
-    this.setState(prevState => ({condition: !prevState.condition,first:'',last:''}))
+    const f = document.getElementById('first')
+    const l = document.getElementById('last')
+    if (f.value !== '' && l.value !== '') {
+      this.setState(prevState => ({
+        condition: !prevState.condition,
+        first: '',
+        last: '',
+      }))
+    } else if (f.value === '' && l.value == '') {
+      this.setState({condition1: true, condition2: true})
+    } else if (f.value === '') {
+      this.setState({condition1: true})
+    } else if (l.value === '') {
+      this.setState({condition2: true})
+    }
   }
 
   registrationComponent = () => {
@@ -81,8 +95,8 @@ class RegistrationForm extends Component {
       </div>
     )
   }
-  changeComponent=()=>{
-      this.setState(prevState=>({condition:!prevState.condition}))
+  changeComponent = () => {
+    this.setState(prevState => ({condition: !prevState.condition}))
   }
 
   feedbackComponent = () => {
@@ -92,8 +106,15 @@ class RegistrationForm extends Component {
           src="https://assets.ccbp.in/frontend/react-js/success-icon-img.png"
           alt="success"
           className="tick-mark-img"
-          <button type="button" className="response-button" onClick={this.changeComponent}>Submit Another Response</button>
         />
+        <p className="successful-msg">Submitted Successfully</p>
+        <button
+          type="button"
+          className="response-button"
+          onClick={this.changeComponent}
+        >
+          Submit Another Response
+        </button>
       </div>
     )
   }
